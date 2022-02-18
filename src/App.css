@@ -2,37 +2,131 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
+}
+.toolbar {
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.d-flex {
   display: flex;
+}
+
+.space-btw {
+  justify-content: space-between;
+}
+
+
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.column {
   flex-direction: column;
-  align-items: center;
+}
+
+.j-center {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.s-around {
+  justify-content: space-around;
+}
+
+.grow1 {
+  flex: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+button {
+  height: 30px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: grey;
+  color: white;
+  margin: 10px;
+  padding: 5px;
+}
+
+.box {
+  height: 500px;
+  width: 500px;
+  margin:10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #050509;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  height: 30px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #dcd9d9;
+  color: #050509;
+  margin: 10px;
+  padding: 5px;
+
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.column {
+  flex-direction: column;
 }
+
+.a-center {
+  align-items: center;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid;
+  margin: 10px;
+}
+
+img{
+  height: 100px;
+  margin: 10px;
+}
+
+.cartBox {
+  width: 500px;
+  border: 1px solid black;
+
+}
+
+.m-10 {
+  margin: 10px;
+}
+.align-btw {
+  align-items: baseline;
+}
+
+i {
+  font-size: 20px;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.smallInput {
+  height: 10px;
+  width: 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #dcd9d9;
+  color: #050509;
+  margin: 10px;
+  padding: 5px;
+}
+

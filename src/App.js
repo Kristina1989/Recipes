@@ -8,17 +8,20 @@ import AllRecipesPage from "./Pages/AllRecipesPage";
 import SingleRecipePage from "./Pages/SingleRecipePage";
 import FavoritesPage from "./Pages/FavoritesPage";
 
+
 function App() {
 
 
     const [getPage, setPage] = useState("")
     const [getRecipe, setRecipe] = useState([])
     const [getFavorite, setFavorite] = useState([])
-    const [getPhoto, setPhoto] = useState([])
-    const [getIngredient, setIngredient] = useState([])
-    const [getSteps, setSteps] = useState([])
-    const [getReviews, setReviews] = useState ([])
-    const [getRating, setRating] = useState ([])
+    const [getTitleFilter, setTitleFilter] = useState("")
+    const [getIngredientFilter, setIngredientFilter] = useState("")
+    const [getIngredientAmountFilter, setIngredientAmountFilter] = useState("")
+    const [getPreparationTimeFilter, setPreparationTimeFilter] = useState("")
+    const [getReviewsCountFilter, setReviewsCountFilter] = useState("")
+    const [getAverageRatingFilter, setAverageRatingFilter] = useState("")
+    const [value, setValue] = useState(null);
 
 
 
@@ -31,10 +34,13 @@ function App() {
             getRecipe, setRecipe,
             getPage, setPage,
             getFavorite, setFavorite,
-            getPhoto, setPhoto,
-            getIngredient, setIngredient,
-
-
+            getTitleFilter, setTitleFilter,
+            getIngredientFilter, setIngredientFilter,
+            getIngredientAmountFilter, setIngredientAmountFilter,
+            getPreparationTimeFilter, setPreparationTimeFilter,
+            getReviewsCountFilter, setReviewsCountFilter,
+            getAverageRatingFilter, setAverageRatingFilter,
+            value, setValue
 
         }}>
             <BrowserRouter>

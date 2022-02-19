@@ -7,8 +7,7 @@ const CreateRecipe = () => {
 
     const {
         getRecipe, setRecipe,
-        getPhoto, setPhoto,
-        getIngredient, setIngredient
+
     } = useContext(MainContext)
 
     const nav = useNavigate()
@@ -20,22 +19,30 @@ const CreateRecipe = () => {
     const StepsRef = useRef()
 
 
+    const recipe = {
+        title: "",
+        ingredients: [],
+        photo: [],
+        preparation: "",
+        steps: [],
+        reviews: [],
+        avgRating: null
+
+    }
+
+
     function addRecipe() {
-
         if (TitleRef.current.value.length > 0
-            && IngredientsRef.current.value.length > 0
+            && recipe.ingredients.length > 0
             && PhotoRef.current.value.includes("http")
+            && recipe.photo.length > 0
             && PreparationRef.current.value.length > 0
-            && StepsRef.current.value.length > 0
-        ) {
-            const recipe = {
-                title: TitleRef.current.value,
-                ingredients: IngredientsRef.current.value,
-                photo: PhotoRef.current.value,
-                preparation: PreparationRef.current.value + " min",
-                steps: [StepsRef.current.value]
-            }
+            && recipe.steps.length > 0
 
+        ) {
+
+            recipe.title = TitleRef.current.value
+            recipe.preparation = PreparationRef.current.value
             setRecipe([...getRecipe, recipe])
             nav("/recipes")
 
@@ -45,15 +52,18 @@ const CreateRecipe = () => {
 
 
     function addMorePhoto() {
-        setPhoto([...getPhoto, PhotoRef.current.value])
-        console.log(getPhoto)
+        recipe.photo.push(PhotoRef.current.value)
 
     }
 
     function addMoreIngredient() {
-       setIngredient([...getIngredient, IngredientsRef.current.value])
-
+       recipe.ingredients.push(IngredientsRef.current.value)
     }
+
+    function addMoreSteps() {
+        recipe.steps.push(StepsRef.current.value)
+    }
+
 
 
     return (
@@ -73,7 +83,8 @@ const CreateRecipe = () => {
 
                 <input defaultValue="5" ref={PreparationRef} type="number" placeholder="Preparation Time"/>
                 <div>
-                    <input defaultValue="3" ref={StepsRef} type="number" placeholder="Steps"/>
+                    <input defaultValue="isvirti ryzius" ref={StepsRef} type="text" placeholder="Steps"/>
+                    <button onClick={addMoreSteps}>Add Step</button>
                 </div>
 
 

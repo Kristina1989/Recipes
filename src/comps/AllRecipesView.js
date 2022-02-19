@@ -1,12 +1,13 @@
 import {useContext} from 'react';
 import MainContext from "../MainContext/MainContext";
 import {useNavigate} from "react-router-dom"
+import Rating from "@mui/material/Rating";
 
-const AllRecipesView = ({recipe}) => {
+const AllRecipesView = ({recipe, index}) => {
 
     const nav = useNavigate()
 
-    const {getFavorite, setFavorite} = useContext(MainContext)
+    const {getFavorite, setFavorite, getRecipe, setRecipe, setValue} = useContext(MainContext)
 
     function goToRecipe () {
         nav(`/recipe/${recipe.title}`)
@@ -21,18 +22,39 @@ const AllRecipesView = ({recipe}) => {
         }
     }
 
+    function deleteRecipe (recipe, index) {
+        const newArr = getRecipe.filter((x, i) => i !== index)
+        setRecipe([...newArr])
+    }
 
 
     return (
-        <div className="d-flex">
+        <div className="d-flex j-center">
 
             <div  className="card">
-                <h3>{recipe.title}</h3>
-                <img  onClick ={goToRecipe} src={recipe.photo} alt=""/>
-                <div>Ingredients: {recipe.ingredients}</div>
-                <div>Preparation time: {recipe.preparation} </div>
-                <div>Steps: {recipe.steps}</div>
-                <button onClick={addToFavorites}>Add To Favorites</button>
+                <div className="d-flex column a-center">
+                    <h3>{recipe.title}</h3>
+                    <Rating
+                        readOnly
+                        name="simple-controlled"
+                        value={recipe.avgRating}
+                        onChange={(event, newValue) => {
+                            setValue(newValue);
+                        }}
+                    />
+                </div>
+                <img  onClick ={goToRecipe} src={recipe.photo[0]} alt=""/>
+                <div>Ingredients: {recipe.ingredients.length}</div>
+                <div>Preparation time: {recipe.preparation} min </div>
+                <div>Steps: {recipe.steps.length}</div>
+                <div>Reviews: {recipe.reviews.length} </div>
+                <div>Rating: {recipe.avgRating}</div>
+                <div className="d-flex column ">
+                    <button onClick={()=>deleteRecipe(recipe, index)}>Delete Recipe</button>
+                    {!getFavorite.includes(recipe) && <button onClick={addToFavorites}>Add To Favorites</button>}
+
+                </div>
+
             </div>
 
 

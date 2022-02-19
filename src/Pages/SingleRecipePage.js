@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import SingleRecipeView from "../comps/SingleRecipeView";
 import {useParams} from "react-router-dom";
 import MainContext from "../MainContext/MainContext";
@@ -10,7 +10,10 @@ const SingleRecipePage = () => {
 
     const {title} = useParams()
 
-    const recipe = getRecipe.find(x=> x.title === title)
+    const recipe = getRecipe.find(x => x.title === title)
+
+
+
 
     return (
         <div>

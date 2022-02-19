@@ -7,7 +7,7 @@ import Rating from '@mui/material/Rating';
 
 const SingleRecipeView = ({recipe}) => {
 
-    const {getFavorite, setFavorite, setRating, getRating, value, setValue} = useContext(MainContext)
+    const {getFavorite, setFavorite, value, setValue} = useContext(MainContext)
 
 
     function addToFavorites() {
@@ -29,6 +29,7 @@ const SingleRecipeView = ({recipe}) => {
             recipe.reviews.push({rating: value, comment: commentRef.current.value})
             recipe.avgRating = Math.round(recipe.reviews.map(x=>x.rating).reduce((a,b) => (a+b)) / recipe.reviews.length)
             setValue(null)
+            commentRef.current.value = ""
         }
 
     }

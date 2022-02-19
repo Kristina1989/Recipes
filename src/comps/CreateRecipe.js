@@ -31,12 +31,12 @@ const CreateRecipe = () => {
     }
 
 
+
     function addRecipe() {
-        if (TitleRef.current.value.length > 0
+        if (TitleRef.current.value !== ""
             && recipe.ingredients.length > 0
-            && PhotoRef.current.value.includes("http")
             && recipe.photo.length > 0
-            && PreparationRef.current.value.length > 0
+            && PreparationRef.current.value !== ""
             && recipe.steps.length > 0
 
         ) {
@@ -52,16 +52,28 @@ const CreateRecipe = () => {
 
 
     function addMorePhoto() {
-        recipe.photo.push(PhotoRef.current.value)
+        if( PhotoRef.current.value.includes("http")) {
+            recipe.photo.push(PhotoRef.current.value)
+            PhotoRef.current.value = ""
+
+        }
 
     }
 
     function addMoreIngredient() {
-       recipe.ingredients.push(IngredientsRef.current.value)
+        if(IngredientsRef.current.value !== "" ){
+            recipe.ingredients.push(IngredientsRef.current.value)
+            IngredientsRef.current.value = ""
+
+        }
+
     }
 
     function addMoreSteps() {
+        if(StepsRef.current.value !== "")
         recipe.steps.push(StepsRef.current.value)
+        StepsRef.current.value = ""
+
     }
 
 
@@ -70,20 +82,19 @@ const CreateRecipe = () => {
         <div className="d-flex a-center  j-center column">
             <div className="box d-flex j-center a-center column">
                 <h2>CREATE RECIPE</h2>
-                <input defaultValue="Plovas" ref={TitleRef} type="text" placeholder="Title"/>
+                <input defaultValue="" ref={TitleRef} type="text" placeholder="Title"/>
                 <div>
-                    <input defaultValue="ryziai" ref={IngredientsRef} type="text" placeholder="Ingredients"/>
+                    <input  defaultValue="" ref={IngredientsRef} type="text" placeholder="Ingredients"/>
                     <button onClick={addMoreIngredient}>Add Ingredient</button>
                 </div>
                 <div>
-                    <input defaultValue="https://www.lamaistas.lt/uploads/modules/recipes/thumb920x573/17350.jpg"
-                           ref={PhotoRef} type="text" placeholder="Photo"/>
+                    <input defaultValue="" ref={PhotoRef} type="text" placeholder="Photo"/>
                     <button onClick={addMorePhoto}>Add Photo</button>
                 </div>
 
-                <input defaultValue="5" ref={PreparationRef} type="number" placeholder="Preparation Time"/>
+                <input defaultValue="" ref={PreparationRef} type="number" placeholder="Preparation Time"/>
                 <div>
-                    <input defaultValue="isvirti ryzius" ref={StepsRef} type="text" placeholder="Steps"/>
+                    <input defaultValue="" ref={StepsRef} type="text" placeholder="Steps"/>
                     <button onClick={addMoreSteps}>Add Step</button>
                 </div>
 
